@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息索引 · 米兰体育app</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fde3cf 0%, #f7d4b8 40%, #f5c9aa 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 3rem;
+      line-height: 1.6;
+      color: #3a2c24;
+    }
+
+    .container {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* 暖白卡片 */
+    .card {
+      background: rgba(255, 249, 240, 0.85);
+      backdrop-filter: blur(2px);
+      border-radius: 36px;
+      padding: 2.5rem 2.2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 12px 30px rgba(140, 80, 40, 0.12);
+      transition: box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 16px 40px rgba(140, 80, 40, 0.18);
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #4f3324;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: #674b3a;
+      border-left: 4px solid #c9956b;
+      padding-left: 1rem;
+      margin: 1rem 0 1.2rem;
+      font-weight: 350;
+    }
+
+    .tagline {
+      display: inline-block;
+      background: #ebd3be;
+      color: #3f2d1f;
+      padding: 0.3rem 1.1rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.2rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      color: #4f3324;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2::before {
+      content: "▍";
+      color: #c6814e;
+      font-weight: 300;
+      font-size: 1.8rem;
+    }
+
+    p {
+      margin-bottom: 0.9rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .info-box {
+      background: rgba(255, 241, 229, 0.6);
+      border-radius: 20px;
+      padding: 1.2rem 1.4rem;
+      transition: background 0.2s;
+    }
+
+    .info-box strong {
+      display: block;
+      font-weight: 600;
+      color: #6b4c36;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-item {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(160, 120, 90, 0.15);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #654432;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      color: #4f3b2e;
+      padding-left: 0.5rem;
+    }
+
+    .link-btn {
+      display: inline-block;
+      background: #dbaa80;
+      color: #2f2017;
+      padding: 0.55rem 1.6rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border: 1px solid rgba(110, 70, 40, 0.1);
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 4px 8px rgba(100, 60, 30, 0.08);
+    }
+
+    .link-btn:hover {
+      background: #ce956b;
+      transform: scale(1.02);
+    }
+
+    .inline-link {
+      color: #864f2b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      text-decoration-color: #c9956b;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .inline-link:hover {
+      color: #4f2f1b;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem 2rem;
+      margin-top: 1rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(140, 100, 70, 0.15);
+    }
+
+    .footer-links a {
+      color: #5a3f2e;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px dotted transparent;
+      transition: border-color 0.2s;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #9f7a5b;
+    }
+
+    .footnote {
+      text-align: center;
+      font-size: 0.8rem;
+      margin-top: 2rem;
+      color: #6d5643;
+    }
+
+    @media (max-width: 680px) {
+      body { padding: 1.2rem 0.8rem; }
+      .card { padding: 1.8rem 1.2rem; border-radius: 28px; }
+      h1 { font-size: 2rem; }
+      .grid-2 { grid-template-columns: 1fr; gap: 1rem; }
+      .hero-sub { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- hero 区 -->
+    <div class="card">
+      <span class="tagline">📋 资料整理 · 信息索引</span>
+      <h1>米兰体育app · 内容梳理</h1>
+      <div class="hero-sub">
+        从信息整合与功能分类的角度，对米兰体育app提供的资讯框架与模块进行系统化呈现。
+      </div>
+      <p style="margin-top: 0.8rem;">
+        <a href="https://page-milanapp.com" class="link-btn">米兰体育app</a>
+      </p>
+      <p style="margin-top: 1.4rem; font-size: 0.95rem; color: #4d3b2e;">
+        以下内容基于公开界面与常见体育资讯应用的一般结构进行整理，旨在帮助使用者快速了解该应用的内容布局与索引方式。
+      </p>
+    </div>
+
+    <!-- 优势区：信息索引视角 -->
+    <div class="card">
+      <h2>资料索引特点</h2>
+      <div class="grid-2">
+        <div class="info-box">
+          <strong>📂 多层级分类</strong>
+          <span>赛事、球队、数据、新闻按时间线与赛事类型归档，便于按需检索。</span>
+        </div>
+        <div class="info-box">
+          <strong>🔍 关键词聚合</strong>
+          <span>支持热门联赛、队伍、球员标签，将分散内容关联至同一信息节点。</span>
+        </div>
+        <div class="info-box">
+          <strong>📆 历史记录参考</strong>
+          <span>保留近期浏览与常用筛选，可快速回溯之前关注的比赛或专题。</span>
+        </div>
+        <div class="info-box">
+          <strong>🧩 模块化展示</strong>
+          <span>比分、赛程、阵容、统计分别独立卡片，信息层级清晰，适合横向对比。</span>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.92rem;">
+        这些分类逻辑有助于使用者在面对大量体育信息时，通过索引路径快速定位感兴趣的内容。
+      </p>
+    </div>
+
+    <!-- 说明区：应用场景与整理思路 -->
+    <div class="card">
+      <h2>场景与整理方式</h2>
+      <p>
+        在信息聚合类应用中，如何高效组织赛事数据、新闻专题以及实时动态是一大重点。<a href="https://page-milanapp.com" class="inline-link">米兰体育app</a> 在界面设计上采用分区标题与可折叠列表，将同一赛事的不同阶段（前瞻、战报、统计）串联起来，形成一条完整的信息链。
+      </p>
+      <p>
+        对于需要持续跟踪特定联赛或球队的使用者，可利用收藏或关注功能建立个人资料夹；而临时查询某一赛果或球员数据时，通过搜索入口与分类标签能较快完成索引。这种资料整理思路，兼顾了长期追踪与即时查阅两种需求。
+      </p>
+      <p style="margin-top: 0.6rem; font-style: italic; color: #5b4433;">
+        —— 从信息获取效率的角度看，合理的分类架构能减少冗余浏览，让注意力集中在关键内容上。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card">
+      <h2>FAQ 摘要</h2>
+      <div class="faq-item">
+        <div class="faq-q">Q：如何快速找到某支球队的近期赛程？</div>
+        <div class="faq-a">A：在首页或联赛板块使用球队筛选，或通过搜索球队名称进入详情页，赛程将以时间线列出。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q：能否浏览历史某个赛季的数据？</div>
+        <div class="faq-a">A：部分模块提供赛季选择器，可切换至过往赛季查看积分、射手等汇总数据。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q：专题文章与即时新闻如何区分？</div>
+        <div class="faq-a">A：界面通常以“新闻”和“专题”分类栏区分，专题内容多为系列报道或深度分析，新闻侧重实时消息。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q：个人关注列表是否支持多设备同步？</div>
+        <div class="faq-a">A：需根据账户绑定情况而定，部分版本支持登录后同步关注内容，建议在设置中确认同步状态。</div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">
+        以上回答基于常见功能逻辑，具体操作请以应用内实际界面为准。
+      </p>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="card" style="padding: 1.8rem 2rem;">
+      <div class="footer-links">
+        <a href="https://page-milanapp.com">米兰体育app</a>
+        <a href="https://page-milanapp.com">米兰体育app</a>
+        <a href="https://page-milanapp.com">米兰体育app</a>
+        <a href="https://page-milanapp.com">米兰体育app</a>
+      </div>
+      <p style="margin-top: 1.2rem; text-align: center;">
+        更多资料整理与功能索引，可参考 <a href="https://page-milanapp.com" class="inline-link">米兰体育app</a> 内的帮助与说明模块。
+      </p>
+      <div class="footnote">
+        本页面为信息汇总页，内容仅供索引参考，不构成使用建议。
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
